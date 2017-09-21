@@ -6,16 +6,13 @@ using System;
 
 public class Health : MonoBehaviour, IHealth {
 
+    private int _currentHealth;
+
     public int CurrentHealth
     {
         get
         {
-            return CurrentHealth;
-        }
-
-        set
-        {
-            CurrentHealth = value;
+            return _currentHealth;
         }
     }
 
@@ -32,11 +29,11 @@ public class Health : MonoBehaviour, IHealth {
     {
         if ((CurrentHealth - amount) >= MinimumHealth)
         {
-            CurrentHealth -= amount;
+            _currentHealth -= amount;
         }
         else
         {
-            CurrentHealth = MinimumHealth;
+            _currentHealth = MinimumHealth;
         }
     }
 
@@ -44,16 +41,16 @@ public class Health : MonoBehaviour, IHealth {
     {
         if ((CurrentHealth + amount) <= MaximumHealth)
         {
-            CurrentHealth += amount;
+            _currentHealth += amount;
         }
         else
         {
-            CurrentHealth = MaximumHealth;
+            _currentHealth = MaximumHealth;
         }
     }
 
     private void Awake()
     {
-        CurrentHealth = StartingHealth;
+        _currentHealth = StartingHealth;
     } 
 }
