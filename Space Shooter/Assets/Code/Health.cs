@@ -20,19 +20,23 @@ public class Health : MonoBehaviour, IHealth {
     }
 
     [SerializeField]
-    public int StartingHealth = 100;
+    private int StartingHealth = 100;
 
     [SerializeField]
-    public int MinimumHealth = 0;
+    private int MinimumHealth = 0;
 
     [SerializeField]
-    public int MaximumHealth = 200;
+    private int MaximumHealth = 200;
 
     public void DecreaseHealth(int amount)
     {
         if ((CurrentHealth - amount) >= MinimumHealth)
         {
             CurrentHealth -= amount;
+        }
+        else
+        {
+            CurrentHealth = MinimumHealth;
         }
     }
 
@@ -41,6 +45,10 @@ public class Health : MonoBehaviour, IHealth {
         if ((CurrentHealth + amount) <= MaximumHealth)
         {
             CurrentHealth += amount;
+        }
+        else
+        {
+            CurrentHealth = MaximumHealth;
         }
     }
 
